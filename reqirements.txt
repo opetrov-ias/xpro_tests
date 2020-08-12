@@ -1,0 +1,7 @@
+# --extra-index-url https://nexus.303net.net/repository/hosted-pypi/simple
+invoke
+pytest
+boto3
+snowflake-connector-python
+etl-python-common
+
