@@ -20,7 +20,7 @@ from pyvault
 def check_access(context):
     access_key = pyvault.get_value("/etl/prod/etl_aws/s3-integralads-data-reporting/aws_access_key_id")
     pyvault_key = pyvault.get_value("/etl/prod/etl_aws/s3-integralads-data-reporting/aws_secret_access_key")
-    print('ACCESS_KEY:{1}'.format(access_key))
+    print('ACCESS_KEY:{0}'.format(access_key))
 
 
 @task
