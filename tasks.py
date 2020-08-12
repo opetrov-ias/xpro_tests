@@ -3,7 +3,7 @@ from invoke import task
 import boto3
 # from samples import roles
 from pprint import pprint
-from pyvault
+import pyvault
 
 
 #@task
