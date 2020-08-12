@@ -1,14 +1,14 @@
 from ias_etl_common.runtime import get_runtime
 from invoke import task
 import boto3
-from samples import roles
+# from samples import roles
 from pprint import pprint
 
-@task
-def role_list(context):
-    print("print roles...")
-    rl = roles.get_roles()
-    pprint(rl)
+#@task
+#def role_list(context):
+#    print("print roles...")
+#    rl = roles.get_roles()
+#    pprint(rl)
 
 @task
 def user(context):
