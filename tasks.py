@@ -3,6 +3,8 @@ from invoke import task
 import boto3
 # from samples import roles
 from pprint import pprint
+from pyvault
+
 
 #@task
 #def role_list(context):
@@ -10,9 +12,16 @@ from pprint import pprint
 #    rl = roles.get_roles()
 #    pprint(rl)
 
+#@task
+#def user(context):
+#    pprint(roles.current_user())
+
 @task
-def user(context):
-    pprint(roles.current_user())
+def check_access(context):
+    access_key = pyvault.get_value("/etl/prod/etl_aws/s3-integralads-data-reporting/aws_access_key_id")
+    pyvault_key = pyvault.get_value("/etl/prod/etl_aws/s3-integralads-data-reporting/aws_secret_access_key")
+    print('ACCESS_KEY:{1}'.format(access_key))
+
 
 @task
 def current_user(context):
