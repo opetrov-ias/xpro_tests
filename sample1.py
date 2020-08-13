@@ -16,3 +16,6 @@ s3 = boto3.client(
     aws_secret_access_key=credentials['SecretAccessKey'],
     aws_session_token=credentials['SessionToken'],
 )
+
+for bucket in s3_resource.buckets.all():
+    print(bucket.name)
