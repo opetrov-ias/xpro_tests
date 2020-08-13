@@ -1,6 +1,8 @@
 import boto3
 import pprint
 
+boto3.set_stream_logger('botocore', level='DEBUG')
+
 client = boto3.client('sts')
                  
 assumed_role_object=client.assume_role(
