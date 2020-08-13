@@ -1,6 +1,8 @@
 import boto3
+import pprint
 
 client = boto3.client('sts')
+pprint.pprint(client.__dict__)
 account_id = client.get_caller_identity()["Account"]
 print(account_id)
                  
