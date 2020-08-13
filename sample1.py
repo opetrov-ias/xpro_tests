@@ -3,8 +3,8 @@ import boto3
 sts_client = boto3.client('sts')
                  
 assumed_role_object=sts_client.assume_role(
-    RoleArn="arn:aws:iam::420933651491:role/svcJenkins-WeedWhackers", 
-    RoleSessionName="s3ToSnowflakeAssumeRoleSession"
+    RoleArn="arn:aws:iam::420933651491:role/svcJenkins-WeedWhackers"
+    # RoleSessionName="s3ToSnowflakeAssumeRoleSession"
 )
 
 # From the response that contains the assumed role, get the temporary
