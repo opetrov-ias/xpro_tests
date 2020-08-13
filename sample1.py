@@ -1,15 +1,12 @@
 import boto3
 
 sts_client = boto3.client('sts')
-# Call the assume_role method of the STSConnection object and pass the role
-# ARN and a role session name.
+
+role = arn:aws:iam::{0}:role/svcJenkins-WeedWhackers".format('420933651491')
+print('ROLE:{0}.'.format(role))                    
 
 assumed_role_object=sts_client.assume_role(
-# RoleArn="arn:aws:iam::972380794107:role/svcSnowflakeS3",
-#  RoleArn="arn:aws:iam::633215444626:role/svcJenkins-Snowflake",
-# prod = 420933651491
-# prod-rep = 454457967641
-    RoleArn="arn:aws:iam::{0}:role/svcJenkins-WeedWhackers".format('420933651491'),
+    RoleArn="arn:aws:iam::{0}:role/svcJenkins-WeedWhackers".format('420933651491'), 
     RoleSessionName="s3ToSnowflakeAssumeRoleSession"
 )
 
