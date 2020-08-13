@@ -2,13 +2,10 @@ import boto3
 import pprint
 
 client = boto3.client('sts')
-pprint.pprint(client.__dict__)
-account_id = client.get_caller_identity()["Account"]
-print(account_id)
                  
 assumed_role_object=client.assume_role(
     RoleArn="arn:aws:iam::420933651491:role/svcJenkins-WeedWhackers",
-    RoleSessionName= "AssumeRoleSession1"  # "s3ToSnowflakeAssumeRoleSession"
+    RoleSessionName= "AssumeRoleSession1" 
 )
 
 # From the response that contains the assumed role, get the temporary
