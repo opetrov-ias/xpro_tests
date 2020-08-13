@@ -1,8 +1,10 @@
 import boto3
 
-sts_client = boto3.client('sts')
+client = boto3.client('sts')
+account_id = client.get_caller_identity()["Account"]
+print(account_id)
                  
-assumed_role_object=sts_client.assume_role(
+assumed_role_object=client.assume_role(
     RoleArn="arn:aws:iam::420933651491:role/svcJenkins-WeedWhackers",
     RoleSessionName= "AssumeRoleSession1"  # "s3ToSnowflakeAssumeRoleSession"
 )
@@ -17,5 +19,5 @@ s3 = boto3.client(
     aws_session_token=credentials['SessionToken'],
 )
 
-for bucket in s3_resource.buckets.all():
+for bucket in s3.buckets.all():
     print(bucket.name)
