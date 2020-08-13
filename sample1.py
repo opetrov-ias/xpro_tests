@@ -4,7 +4,7 @@ import pprint
 client = boto3.client('sts')
                  
 assumed_role_object=client.assume_role(
-    RoleArn="arn:aws:iam::420933651491:role/svcJenkins-WeedWhackers",
+    RoleArn="arn:aws:iam::972380794107:role/svcJenkins-WeedWhackers",
     RoleSessionName= "AssumeRoleSession1" 
 )
 
