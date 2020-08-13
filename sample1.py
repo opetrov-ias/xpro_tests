@@ -3,10 +3,10 @@ import boto3
 sts_client = boto3.client('sts')
 
 role = "arn:aws:iam::{0}:role/svcJenkins-WeedWhackers".format('420933651491')
-print('ROLE:{0}.'.format(role))                    
+print('ROLE:{0}'.format(role))                    
 
 assumed_role_object=sts_client.assume_role(
-    RoleArn="arn:aws:iam::{0}:role/svcJenkins-WeedWhackers".format('420933651491'), 
+    RoleArn=role, 
     RoleSessionName="s3ToSnowflakeAssumeRoleSession"
 )
 
