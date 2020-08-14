@@ -17,7 +17,7 @@ assumed_role_object=client.assume_role(
     RoleArn="arn:aws:iam::420933651491:role/svcJenkins-WeedWhackers",
     RoleSessionName= "AssumeRoleSession1" 
 )
-exit()
+
 
 # From the response that contains the assumed role, get the temporary
 # credentials that can be used to make subsequent API calls
