@@ -5,10 +5,10 @@ import os
 
 boto3.set_stream_logger('botocore', level='DEBUG')
 
-os.environ['AWS_ACCESS_KEY_ID'] = pyvault.get_value("/etl/prod/etl_aws/s3-integralads-data-reporting/aws_access_key_id")
-os.environ['AWS_SECRET_ACCESS_KEY'] = pyvault.get_value("/etl/prod/etl_aws/s3-integralads-data-reporting/aws_secret_access_key")
-print(os.environ['AWS_ACCESS_KEY_ID'])
-print(os.environ['AWS_SECRET_ACCESS_KEY'])
+# os.environ['AWS_ACCESS_KEY_ID'] = pyvault.get_value("/etl/prod/etl_aws/s3-integralads-data-reporting/aws_access_key_id")
+# os.environ['AWS_SECRET_ACCESS_KEY'] = pyvault.get_value("/etl/prod/etl_aws/s3-integralads-data-reporting/aws_secret_access_key")
+# print(os.environ['AWS_ACCESS_KEY_ID'])
+# print(os.environ['AWS_SECRET_ACCESS_KEY'])
 
 client = boto3.client('sts')
  
