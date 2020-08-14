@@ -10,7 +10,7 @@ print(os.environ['AWS_ACCESS_KEY_ID'])
 print(os.environ['AWS_SECRET_ACCESS_KEY'])
 
 client = boto3.client('sts')
-                 
+ 
 assumed_role_object=client.assume_role(
     RoleArn="arn:aws:iam::420933651491:role/svcJenkins-WeedWhackers",
     RoleSessionName= "AssumeRoleSession1" 

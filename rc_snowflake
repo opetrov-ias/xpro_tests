@@ -1,0 +1,10 @@
+# Export environment variables
+export SNOWSQL_ACCOUNT=ias.us-east-1
+export SNOWSQL_USER=PMI_REPORTS_PROD
+export SNOWSQL_PWD="23w%2F&c3p=kv_J4zdbMh=ndRqFrMAsk"
+export SNOWSQL_DATABASE=CDS_PROD
+# export SNOWSQL_WAREHOUSE=ADHOC_WH
+export SNOWSQL_WAREHOUSE=REPORTS_SUBSCRIPTION_PROD_WH
+export SNOWSQL_SCHEMA=analytics
+
+# env | grep SNOW

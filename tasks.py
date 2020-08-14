@@ -1,27 +1,18 @@
 from ias_etl_common.runtime import get_runtime
 from invoke import task
 import boto3
-# from samples import roles
+from samples import roles
 from pprint import pprint
-import pyvault
-
-
-#@task
-#def role_list(context):
-#    print("print roles...")
-#    rl = roles.get_roles()
-#    pprint(rl)
-
-#@task
-#def user(context):
-#    pprint(roles.current_user())
 
 @task
-def check_access(context):
-    access_key = pyvault.get_value("/etl/prod/etl_aws/s3-integralads-data-reporting/aws_access_key_id")
-    pyvault_key = pyvault.get_value("/etl/prod/etl_aws/s3-integralads-data-reporting/aws_secret_access_key")
-    print('ACCESS_KEY:{0}'.format(access_key))
+def role_list(context):
+    print("print roles...")
+    rl = roles.get_roles()
+    pprint(rl)
 
+@task
+def user(context):
+    pprint(roles.current_user())
 
 @task
 def current_user(context):
@@ -55,3 +46,9 @@ def show_runtime(context):
     runtime = get_runtime()
     pprint(runtime.__dict__)
 
+@task
+def check_pipeline(context):
+    print('Running the app...')
+    context.run('source rc_snowflake;python pm_eval.py')
+
+    
