@@ -18,7 +18,7 @@ def user(context):
 
 @task
 def current_user(context):
-    check_cred(context)
+    # check_cred(context)
     client = boto3.client('sts')
     current_user = client.get_caller_identity() # .get('Account')
     pprint(current_user)
