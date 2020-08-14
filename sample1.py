@@ -1,6 +1,7 @@
 import boto3
 import pprint
 import pyvault
+import os
 
 boto3.set_stream_logger('botocore', level='DEBUG')
 

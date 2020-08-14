@@ -4,6 +4,8 @@ import os
 from datetime import datetime, timedelta
 import boto3
 import snowflake.connector
+import pyvault
+from pprint import pprint
 
 logger = logging.getLogger(__name__)
 
@@ -22,10 +24,20 @@ class S3Serv:
 
     def __init__(self):
         self.con = None
-        self.client = boto3.client('s3')
+        self._check_credentials()
+        self.client = boto3.client('s3',
+            aws_access_key_id=os.environ['AWS_ACCESS_KEY_ID'],
+            aws_secret_access_key=os.environ['AWS_SECRET_ACCESS_KEY'])
         self.paginator = self.client.get_paginator('list_objects_v2')
         self.bucket = 'partner-measured'
         self.log_prefix = 'raw_logs'
+
+    def _check_credentials(self):
+        access_key = pyvault.get_value('/etl/prod/etl_aws/s3-integralads-data-reporting/aws_access_key_id')
+        secret_key = pyvault.get_value("/etl/prod/etl_aws/s3-integralads-data-reporting/aws_secret_access_key")
+        os.environ['AWS_ACCESS_KEY_ID'] = access_key
+        os.environ['AWS_SECRET_ACCESS_KEY'] = secret_key  
+        pprint(os.environ)
 
     def get_size(self, partner, date):
         yyyy, mm, dd = date.split('-')

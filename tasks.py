@@ -3,6 +3,8 @@ from invoke import task
 import boto3
 from samples import roles
 from pprint import pprint
+import pyvault
+import os
 
 @task
 def role_list(context):
@@ -16,12 +18,14 @@ def user(context):
 
 @task
 def current_user(context):
+    check_cred(context)
     client = boto3.client('sts')
     current_user = client.get_caller_identity() # .get('Account')
     pprint(current_user)
 
 @task
 def s3_list(context, prefix='pinterest'):
+    check_cred(context)
     client = boto3.client('s3')
     objects = client.list_objects(Bucket='partner-measured', Prefix=prefix)
     pprint(objects)
@@ -45,6 +49,16 @@ def s3_size(context, bucket='partner-measured', prefix='pinterest/raw_logs/2020/
 def show_runtime(context):
     runtime = get_runtime()
     pprint(runtime.__dict__)
+
+
+@task
+def check_cred(context):
+    access_key = pyvault.get_value('/etl/prod/etl_aws/s3-integralads-data-reporting/aws_access_key_id')
+    secret_key =pyvault.get_value("/etl/prod/etl_aws/s3-integralads-data-reporting/aws_secret_access_key")
+    print(access_key)
+    print(secret_key)
+    os.environ['AWS_ACCESS_KEY_ID'] = access_key
+    os.environ['AWS_SECRET_ACCESS_KEY'] = secret_key
 
 @task
 def check_pipeline(context):
