@@ -11,6 +11,7 @@ boto3.set_stream_logger('botocore', level='DEBUG')
 # print(os.environ['AWS_SECRET_ACCESS_KEY'])
 
 client = boto3.client('sts')
+pprint('get_caller_identity:{0}'.format(client.get_caller_identity())) 
  
 assumed_role_object=client.assume_role(
     RoleArn="arn:aws:iam::420933651491:role/svcJenkins-WeedWhackers",
